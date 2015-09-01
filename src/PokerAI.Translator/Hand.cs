@@ -24,7 +24,27 @@ namespace PokerAI.Translator
 
         public Hand(string input)
         {
-            var split = input.Split(' ');
+            var split = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            Timestamp = Int32.Parse(split[0]);
+            Dealer = Int32.Parse(split[1]);
+            HandId = Int32.Parse(split[2]);
+            PlayerCountDealt = Int32.Parse(split[3]);
+            var flopSituation = split[4].Split('/');
+            PlayerCountFlop = Int32.Parse(flopSituation[0]);
+            PotSizeFlop = Int32.Parse(flopSituation[1]);
+            var turnSituation = split[5].Split('/');
+            PlayerCountTurn = Int32.Parse(turnSituation[0]);
+            PotSizeTurn = Int32.Parse(turnSituation[1]);
+            var riverSituation = split[6].Split('/');
+            PlayerCountRiver = Int32.Parse(riverSituation[0]);
+            PotSizeRiver = Int32.Parse(riverSituation[1]);
+            var showdownSituation = split[7].Split('/');
+            PlayerCountShowdown = Int32.Parse(showdownSituation[0]);
+            PotSizeShowdown = Int32.Parse(showdownSituation[1]);
+            for (int i = 8; i < split.Count(); i++)
+            {
+                Board += split[i];
+            }
         }
     }
 }
