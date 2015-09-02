@@ -26,7 +26,7 @@ namespace PokerAI.Translator.Test
             hand.PotSizeTurn.ShouldBe(40);
             hand.PotSizeRiver.ShouldBe(80);
             hand.PotSizeShowdown.ShouldBe(120);
-            hand.Board.ShouldBe("Qc Ks 8s Jh Tc");
+            hand.Board.ShouldBe("QcKs8sJhTc");
         }
     }
 }
