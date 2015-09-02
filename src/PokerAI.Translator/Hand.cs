@@ -46,5 +46,25 @@ namespace PokerAI.Translator
                 Board += split[i];
             }
         }
+
+        public override string ToString()
+        {
+            return $"Hand #{Timestamp} with {PlayerCountDealt} players";
+        }
+
+        public override int GetHashCode()
+        {
+            return Timestamp;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var otherHand = obj as Hand;
+            if (otherHand != null)
+            {
+                return Timestamp.Equals(otherHand.Timestamp);
+            }
+            return false;
+        }
     }
 }
