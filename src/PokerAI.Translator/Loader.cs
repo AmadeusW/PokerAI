@@ -9,14 +9,26 @@ namespace PokerAI.Translator
 {
     public class Loader
     {
-        public void LoadData()
+        public static void LoadData()
         {
             var handPath = @"C:\Users\Amadeus\Documents\GitHub\PokerAI\data\holdem\199504\hdb";
             var rosterPath = @"C:\Users\Amadeus\Documents\GitHub\PokerAI\data\holdem\199504\hroster";
             var playerDirectory = @"C:\Users\Amadeus\Documents\GitHub\PokerAI\data\holdem\199504\pdb";
 
-            var handRaw = File.ReadAllLines(handPath);
-            var rosterRaw = File.ReadAllLines(rosterPath);
+            var rawHands = File.ReadAllLines(handPath);
+            var rawRosters = File.ReadAllLines(rosterPath);
+
+            List<Hand> hands = new List<Hand>();
+            List<Roster> rosters = new List<Roster>();
+
+            foreach (var rawHand in rawHands)
+            {
+                hands.Add(new Hand(rawHand));
+            }
+            foreach (var rawRoster in rawRosters)
+            {
+                rosters.Add(new Roster(rawRoster));
+            }
         }
     }
 }
